@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     SDL_Window *window = SDL_CreateWindow("Hello SDL", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, 0);
 
-    SDL_Texture* manTexture = loadTexture("assets/man.png", renderer);
+    SDL_Texture* manTexture = loadTexture("assets/man2.png", renderer);
     SDL_Rect rectangle = { x: 0, y: 0, w: 64, h: 64};
 
     bool isRunning = true;
