@@ -3,6 +3,7 @@
 #include <unordered_set>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <chrono>
 
 template <typename T>
 void print_set(std::unordered_set<T> const &s)
@@ -59,6 +60,10 @@ int main(int argc, char **argv)
 
     std::unordered_set<SDL_Keycode> keys_pressed;
 
+    auto frame_length = std::chrono::microseconds{(int) (1.0/60.0*1000.0*1000.0)};
+    auto ticktocklength = std::chrono::seconds{(int) (1.0)};
+    auto current_time = std::chrono::steady_clock::now();
+
     while (isRunning)
     {
         while (SDL_PollEvent(&event))
@@ -108,6 +113,11 @@ int main(int argc, char **argv)
         {
             rectangle.x = 0;
             rectangle.y = 0;
+        }
+
+        if (std::chrono::steady_clock::now() > current_time + ticktocklength) {
+            std::cout << "tick tock\n";
+            current_time += ticktocklength;
         }
 
         SDL_RenderClear(renderer);
