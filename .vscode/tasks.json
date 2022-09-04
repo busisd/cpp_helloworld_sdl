@@ -12,10 +12,13 @@
 				"-o",
 				"${workspaceFolder}\\build\\${fileBasenameNoExtension}.exe",
 				"-I${workspaceFolder}\\libraries\\SDL2-2.24.0\\x86_64-w64-mingw32\\include\\SDL2",
+				"-I${workspaceFolder}\\libraries\\SDL2_image-2.6.2\\x86_64-w64-mingw32\\include\\SDL2",
 				"-lmingw32",
 				"-lSDL2main",
 				"-lSDL2",
-				"-L${workspaceFolder}\\libraries\\SDL2-2.24.0\\x86_64-w64-mingw32\\lib"
+				"-L${workspaceFolder}\\libraries\\SDL2-2.24.0\\x86_64-w64-mingw32\\lib",
+				"-lSDL2_image",
+				"-L${workspaceFolder}\\libraries\\SDL2_image-2.6.2\\x86_64-w64-mingw32\\lib"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
