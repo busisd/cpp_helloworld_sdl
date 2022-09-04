@@ -63,6 +63,7 @@ int main(int argc, char **argv)
     auto frame_length = std::chrono::microseconds{(int)(1.0 / 60.0 * 1000.0 * 1000.0)};
 
     auto current_time = std::chrono::steady_clock::now();
+    int y_accel = 0;
 
     while (isRunning)
     {
@@ -98,13 +99,17 @@ int main(int argc, char **argv)
         {
             current_time += frame_length;
 
+            rectangle.y -= y_accel;
+            y_accel -= 1;
+
             if (keys_pressed.find(SDLK_UP) != keys_pressed.end())
             {
-                rectangle.y -= 5;
+                if(y_accel < 0) y_accel = 20;
+                // rectangle.y -= 5;
             }
             if (keys_pressed.find(SDLK_DOWN) != keys_pressed.end())
             {
-                rectangle.y += 5;
+                // rectangle.y += 5;
             }
             if (keys_pressed.find(SDLK_RIGHT) != keys_pressed.end())
             {
@@ -118,6 +123,7 @@ int main(int argc, char **argv)
             {
                 rectangle.x = 0;
                 rectangle.y = 0;
+                y_accel = 0;
             }
         }
 
